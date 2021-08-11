@@ -20,6 +20,6 @@ export class WordBashState {
   }
 
   @action private readonly onResize = () => {
-    this.viewMode = window.innerWidth <= this.maxMobileWidth ? ViewMode.MOBILE : ViewMode.DESKTOP;
+    this.viewMode = window.innerWidth < this.maxMobileWidth ? ViewMode.MOBILE : ViewMode.DESKTOP;
   };
 }

@@ -4,6 +4,8 @@ import React from 'react';
 import { HomeScreen } from './components/home/HomeScreen';
 import { WordBashScreen, WordBashState } from './state/WordBashState';
 
+import './app-styles.scss';
+
 /**
  * This higher-order component determines whether to render a mobile or web view,
  * depending on the size of the user's screen. It does so on load and on resize,
