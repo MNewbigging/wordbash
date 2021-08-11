@@ -1,0 +1,16 @@
+.letter-tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 2em;
+  color: white;
+
+  box-sizing: border-box;
+  //border: 1px solid black;
+  border-radius: 15px;
+  box-shadow: 1px 1px 1px 1px rgb(105, 105, 105);
+  //box-shadow: inset 0px 0px 2px 2px white;
+
+  background-color: #ee1246;
+}
