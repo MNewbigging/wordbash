@@ -1,9 +1,8 @@
-import { action, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import React from 'react';
 
-import { WordBashMobile } from './components/mobile/WordBashMobile';
-import { WordBashWeb } from './components/web/WordBashWeb';
+import { HomeScreen } from './components/home/HomeScreen';
+import { WordBashScreen, WordBashState } from './state/WordBashState';
 
 /**
  * This higher-order component determines whether to render a mobile or web view,
@@ -12,28 +11,16 @@ import { WordBashWeb } from './components/web/WordBashWeb';
  */
 @observer
 export class App extends React.PureComponent {
-  private readonly maxMobileWidth = 768;
-  @observable screenWidth = window.innerWidth;
-
-  componentDidMount() {
-    window.addEventListener('resize', this.onResize);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.onResize);
-  }
+  private readonly wbState = new WordBashState();
 
   public render() {
-    console.log('screenWidth', this.screenWidth);
-
-    if (this.screenWidth <= this.maxMobileWidth) {
-      return <WordBashMobile />;
+    switch (this.wbState.screen) {
+      case WordBashScreen.HOME:
+        return <HomeScreen />;
+      case WordBashScreen.GAME:
+        return <div>game scren</div>;
+      default:
+        return <div>oops</div>;
     }
-
-    return <WordBashWeb />;
   }
-
-  @action private readonly onResize = () => {
-    this.screenWidth = window.innerWidth;
-  };
 }
