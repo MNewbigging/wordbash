@@ -31,10 +31,8 @@ export class WordBashState {
 
     this.gameState = new GameState(letters);
 
-    console.log('gameState', this.gameState);
-
     // Once setup, swap to game screen
-    this.screen === WordBashScreen.GAME;
+    this.screen = WordBashScreen.GAME;
   }
 
   @action private readonly onResize = () => {

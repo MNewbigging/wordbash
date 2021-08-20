@@ -1,4 +1,6 @@
+import { observer } from 'mobx-react';
 import React from 'react';
+
 import { LetterTile } from '../../common/letter-tile/LetterTile';
 
 import './home-screen-web.scss';
