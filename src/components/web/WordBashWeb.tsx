@@ -12,7 +12,7 @@ export class WordBashWeb extends React.Component<Props> {
     const { wbState } = this.props;
 
     if (wbState.screen === WordBashScreen.HOME) {
-      return <HomeScreenWeb />;
+      return <HomeScreenWeb onPlay={() => wbState.playGame()} />;
     }
 
     return <div></div>;

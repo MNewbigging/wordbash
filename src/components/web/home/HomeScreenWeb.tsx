@@ -3,8 +3,14 @@ import { LetterTile } from '../../common/letter-tile/LetterTile';
 
 import './home-screen-web.scss';
 
-export class HomeScreenWeb extends React.Component {
+interface Props {
+  onPlay: () => void;
+}
+
+export class HomeScreenWeb extends React.Component<Props> {
   public render() {
+    const { onPlay } = this.props;
+
     return (
       <div className={'home-screen-web'}>
         <div className={'title'}>
@@ -21,7 +27,9 @@ export class HomeScreenWeb extends React.Component {
             <LetterTile letter={'H'} />
           </div>
         </div>
-        <div className={'play'}>play</div>
+        <div className={'play'} onClick={() => onPlay()}>
+          play
+        </div>
       </div>
     );
   }
