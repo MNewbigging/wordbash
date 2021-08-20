@@ -14,6 +14,8 @@ export enum ViewMode {
 
 export class WordBashState {
   @observable public screen = WordBashScreen.HOME;
+  @observable public homeScreenExiting = false;
+
   @observable public viewMode = ViewMode.DESKTOP;
   public gameState?: GameState;
 
@@ -31,8 +33,11 @@ export class WordBashState {
 
     this.gameState = new GameState(letters);
 
-    // Once setup, swap to game screen
-    this.screen = WordBashScreen.GAME;
+    // Once setup, start home screen exit animation
+    this.homeScreenExiting = true;
+
+    // Then show game screen after a delay to allow for above exit anim
+    //this.screen = WordBashScreen.GAME;
   }
 
   @action private readonly onResize = () => {
