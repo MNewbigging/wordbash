@@ -1,2 +1,58 @@
 .game-screen-web {
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-areas:
+    'letters answers'
+    'input answers';
+  grid-template-columns: minmax(0, 60%) minmax(0, 40%);
+  grid-template-rows: minmax(0, auto) minmax(0, 100px);
+  column-gap: 30px;
+
+  .letter-pool {
+    grid-area: letters;
+    box-sizing: border-box;
+    border: 1px solid black;
+
+    margin-bottom: 10px;
+  }
+
+  .answer-input {
+    grid-area: input;
+
+    .input-area {
+      width: 100%;
+      height: 100%;
+
+      box-sizing: border-box;
+      border: 1px solid black;
+    }
+  }
+
+  .answer-area {
+    grid-area: answers;
+
+    display: flex;
+    flex-direction: column;
+
+    .game-info {
+      flex: 0 0 100px;
+      width: 100%;
+      margin-bottom: 10px;
+
+      box-sizing: border-box;
+      border: 1px solid black;
+    }
+
+    .answer-list {
+      flex: 1 1;
+      width: 100%;
+
+      box-sizing: border-box;
+      border: 1px solid black;
+    }
+  }
 }
