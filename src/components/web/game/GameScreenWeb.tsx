@@ -20,6 +20,8 @@ export class GameScreenWeb extends React.Component<Props> {
 
     return (
       <div className={'game-screen-web'}>
+        <div className={'score-area'}>SCORE - BUTTONS</div>
+
         <div className={'letter-pool-area'}>
           <LetterPool
             letterPool={gameState.letterPool}
@@ -35,8 +37,6 @@ export class GameScreenWeb extends React.Component<Props> {
             onRemoveLetter={(letter: Letter) => gameState.removeAnswerLetter(letter)}
           />
         </div>
-
-        <div className={'score-area'}>SCORE - BUTTONS</div>
 
         <div className={'answers-area'}>
           <AnswersList
