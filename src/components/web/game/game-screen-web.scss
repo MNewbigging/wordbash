@@ -6,10 +6,11 @@
 
   display: grid;
   grid-template-areas:
+    'letters score'
     'letters answers'
     'input answers';
   grid-template-columns: minmax(0, 60%) minmax(0, 40%);
-  grid-template-rows: minmax(0, auto) minmax(0, 80px);
+  grid-template-rows: minmax(0, 80px) minmax(0, auto) minmax(0, 80px);
   column-gap: 30px;
 
   .letter-pool-area {
@@ -24,27 +25,11 @@
     grid-area: input;
   }
 
-  .answer-area {
+  .score-area {
+    grid-area: score;
+  }
+
+  .answers-area {
     grid-area: answers;
-
-    display: flex;
-    flex-direction: column;
-
-    .game-info {
-      flex: 0 0 100px;
-      width: 100%;
-      margin-bottom: 10px;
-
-      box-sizing: border-box;
-      border: 1px solid black;
-    }
-
-    .answer-list {
-      flex: 1 1;
-      width: 100%;
-
-      box-sizing: border-box;
-      border: 1px solid black;
-    }
   }
 }

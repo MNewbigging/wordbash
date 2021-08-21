@@ -7,6 +7,7 @@ import { AnswerInput } from './AnswerInput';
 import { LetterPool } from './LetterPool';
 
 import './game-screen-web.scss';
+import { AnswersList } from './AnswersList';
 
 interface Props {
   gameState: GameState;
@@ -25,6 +26,7 @@ export class GameScreenWeb extends React.Component<Props> {
             onSelectLetter={(letter: Letter) => gameState.addAnswerLetter(letter.letter)}
           />
         </div>
+
         <div className={'answer-input-area'}>
           <AnswerInput
             answerWord={gameState.answerWord}
@@ -33,9 +35,11 @@ export class GameScreenWeb extends React.Component<Props> {
             onRemoveLetter={(letter: Letter) => gameState.removeAnswerLetter(letter)}
           />
         </div>
-        <div className={'answer-area'}>
-          <div className={'game-info'}>SCORE ~ BUTTONS</div>
-          <div className={'answer-list'}>YOUR ANSWERS HERE</div>
+
+        <div className={'score-area'}>SCORE - BUTTONS</div>
+
+        <div className={'answers-area'}>
+          <AnswersList />
         </div>
       </div>
     );
