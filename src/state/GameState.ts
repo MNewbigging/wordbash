@@ -2,15 +2,28 @@ import { action, observable } from 'mobx';
 import { keyboardObserver } from '../utils/KeyboardObserver';
 import { Letter, LetterStatus } from '../utils/LetterGenerator';
 
+export enum AnswerStatus {
+  ENTER = 'enter',
+  NORMAL = 'normal',
+  WARN = 'warn',
+}
+
 export class GameState {
   @observable public letterPool: Letter[];
   @observable public answerWord: Letter[] = [];
+  @observable public answerStatus = AnswerStatus.ENTER;
 
   constructor(letters: Letter[]) {
     this.letterPool = letters;
 
-    const interactionDelay = 4000;
-    setTimeout(() => keyboardObserver.addKeyListener(this.onKeyPress), interactionDelay);
+    // This value needs to allow for AnswerInput enter animation time
+    const interactionDelay = 6000;
+    setTimeout(() => this.enableInteraction(), interactionDelay);
+  }
+
+  @action private enableInteraction() {
+    keyboardObserver.addKeyListener(this.onKeyPress);
+    this.answerStatus = AnswerStatus.NORMAL;
   }
 
   private readonly onKeyPress = (key: string) => {
@@ -19,7 +32,7 @@ export class GameState {
         this.removeLastAnswerLetter();
         break;
       case 'Enter':
-        // test answer input
+        this.validateAnswerWord();
         break;
       default:
         this.writeAnswerWord(key);
@@ -48,5 +61,13 @@ export class GameState {
 
     letter.status = LetterStatus.ACTIVE;
     this.answerWord.push(letter);
+  }
+
+  private validateAnswerWord() {
+    if (!this.answerWord.length) {
+      this.answerStatus = AnswerStatus.WARN;
+      setTimeout(() => (this.answerStatus = AnswerStatus.NORMAL), 1000);
+      return;
+    }
   }
 }

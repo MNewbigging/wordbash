@@ -7,13 +7,20 @@
   box-sizing: border-box;
   border: 1px solid black;
 
-  // Delay is letter pool size / 10 seconds
-  animation: slideInUp 0.4s $animInCurve 4s;
-  animation-fill-mode: both;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &.enter {
+    // Delay is letter pool size / 10 seconds
+    animation: slideInUp 0.4s $animInCurve 4s;
+    animation-fill-mode: both;
+  }
+
+  &.warn {
+    animation: shakeSide 0.82s $shakeCurve;
+    animation-fill-mode: forwards;
+  }
 
   .answer-word {
     display: flex;

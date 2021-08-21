@@ -23,7 +23,7 @@ export class GameScreenWeb extends React.Component<Props> {
           <LetterPool letterPool={gameState.letterPool} />
         </div>
         <div className={'answer-input-area'}>
-          <AnswerInput answerWord={gameState.answerWord} />
+          <AnswerInput answerWord={gameState.answerWord} answerStatus={gameState.answerStatus} />
         </div>
         <div className={'answer-area'}>
           <div className={'game-info'}>SCORE ~ BUTTONS</div>
