@@ -1,17 +1,16 @@
 .game-screen-web {
-  width: 1000px;
+  width: 555px;
   height: 100%;
   padding: 50px 0px;
   box-sizing: border-box;
 
   display: grid;
   grid-template-areas:
-    'letters score'
-    'letters answers'
-    'input answers';
-  grid-template-columns: minmax(0, 60%) minmax(0, 40%);
-  grid-template-rows: minmax(0, 80px) minmax(0, auto) minmax(0, 80px);
-  column-gap: 30px;
+    'score'
+    'letters'
+    'input'
+    'answers';
+  grid-template-rows: minmax(0, 80px) minmax(0, 222px) minmax(0, 80px) minmax(0, auto);
 
   .letter-pool-area {
     grid-area: letters;
