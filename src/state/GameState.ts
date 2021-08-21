@@ -49,7 +49,10 @@ export class GameState {
     }
 
     // Get the word
-    const word = this.answerWord.map((l) => l.letter).join('');
+    const word = this.answerWord
+      .map((l) => l.letter)
+      .join('')
+      .toLowerCase();
     console.log('word: ', word);
 
     // Minimum answer length of 3
@@ -70,11 +73,13 @@ export class GameState {
     const exists = dictionary.some((w) => w === word);
     if (!exists) {
       this.rejectAnswer();
+      return;
     }
 
     // Cannot have duplicate answers
     if (this.acceptedAnswers.some((ans) => ans === word)) {
       this.rejectAnswer();
+      return;
     }
 
     // Accept the answer

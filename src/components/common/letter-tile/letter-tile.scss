@@ -23,6 +23,8 @@
   }
 
   &.inactive {
+    width: 20%;
+    height: 20%;
     animation: spin 4s linear infinite;
   }
 }

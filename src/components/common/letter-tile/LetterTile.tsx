@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react';
 import React from 'react';
 
-import { Letter } from '../../../utils/LetterGenerator';
+import { Letter, LetterStatus } from '../../../utils/LetterGenerator';
 
 import './letter-tile.scss';
 
@@ -16,7 +16,7 @@ export const LetterTile: React.FC<Props> = observer(({ letter, onSelect }) => {
 
   return (
     <div className={letterClasses.join(' ')} onClick={() => onSelect(letter)}>
-      <div className={'content'}>{letter.letter}</div>
+      {letter.status !== LetterStatus.INACTIVE && letter.letter}
     </div>
   );
 });
