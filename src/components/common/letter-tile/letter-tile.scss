@@ -27,6 +27,10 @@
     height: 20%;
     animation: spin 4s linear infinite;
   }
+
+  &.active {
+    background-color: gold;
+  }
 }
 
 @keyframes spin {
