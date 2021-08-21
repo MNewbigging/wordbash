@@ -27,8 +27,11 @@ export class GameState {
   @observable public answerStatus = AnswerStatus.ENTER;
   @observable public acceptedAnswers: Answer[] = [];
 
-  constructor(letters: Letter[]) {
+  private wordData: Map<string, Set<string>>;
+
+  constructor(letters: Letter[], wordData: Map<string, Set<string>>) {
     this.letterPool = letters;
+    this.wordData = wordData;
 
     // This value needs to allow for AnswerInput enter animation time
     const interactionDelay = 6000;
@@ -73,15 +76,11 @@ export class GameState {
       return;
     }
 
-    // TODO - allow for published site
-    // Get the path to word data
-    const dataPath = `dist/word-data/${word[0]}.txt`;
-
-    // Get the dictionary file for the word
-    const dictionary = await (await this.getDictionary(dataPath)).split('\r\n');
+    // Get the dictionary for this word
+    const dictionary = this.wordData.get(word[0]);
 
     // Is the word in the dictionary?
-    const exists = dictionary.some((w) => w === word);
+    const exists = dictionary.has(word);
     if (!exists) {
       this.rejectAnswer();
       return;
@@ -157,11 +156,5 @@ export class GameState {
     this.acceptedAnswers.push({ word, level, letterIds });
     this.answerWord.forEach((l) => (l.status = LetterStatus.INACTIVE));
     this.answerWord = [];
-  }
-
-  private async getDictionary(filePath: string) {
-    const response = await fetch(filePath);
-
-    return response.text();
   }
 }

@@ -9,12 +9,13 @@ import './home-screen-web.scss';
 interface Props {
   onPlay: () => void;
   exiting: boolean;
+  loading: boolean;
 }
 
 @observer
 export class HomeScreenWeb extends React.Component<Props> {
   public render() {
-    const { onPlay, exiting } = this.props;
+    const { onPlay, exiting, loading } = this.props;
 
     const exitingClass = exiting ? 'exiting' : '';
 
@@ -34,9 +35,14 @@ export class HomeScreenWeb extends React.Component<Props> {
             <LetterTile letter={{ id: 'h', letter: 'H', status: LetterStatus.NORMAL }} />
           </div>
         </div>
-        <div className={'play ' + exitingClass} onClick={() => onPlay()}>
-          play
-        </div>
+
+        {loading ? (
+          <div className={'play ' + exitingClass}>loading</div>
+        ) : (
+          <div className={'play ' + exitingClass} onClick={() => onPlay()}>
+            play
+          </div>
+        )}
       </div>
     );
   }
