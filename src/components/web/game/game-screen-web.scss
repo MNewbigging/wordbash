@@ -12,12 +12,12 @@
   grid-template-rows: minmax(0, auto) minmax(0, 100px);
   column-gap: 30px;
 
-  .letter-pool {
+  .letter-pool-area {
     grid-area: letters;
-    box-sizing: border-box;
-    border: 1px solid black;
-
     margin-bottom: 10px;
+
+    display: flex;
+    flex-direction: column-reverse;
   }
 
   .answer-input {

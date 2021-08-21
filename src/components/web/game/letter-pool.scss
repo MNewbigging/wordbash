@@ -1,0 +1,22 @@
+@import '../../common/styles/animations.scss';
+
+.letter-pool {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid black;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+
+  .letter-container {
+    // TODO - media query to reset this size so it always fits
+    width: 50px;
+    height: 50px;
+    margin-left: 5px;
+    margin-top: 5px;
+
+    animation: slideInDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.01);
+    animation-fill-mode: both;
+  }
+}
