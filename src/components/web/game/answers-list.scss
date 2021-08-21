@@ -8,4 +8,35 @@
 
   animation: slideInLeft 0.4s $animInCurve 4.1s;
   animation-fill-mode: both;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  .answer {
+    margin: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 5px;
+    user-select: none;
+    cursor: pointer;
+    height: fit-content;
+    color: white;
+
+    &.easy {
+      background-color: green;
+    }
+
+    &.med {
+      background-color: blue;
+    }
+
+    &.hard {
+      background-color: purple;
+    }
+
+    &.super {
+      background-color: gold;
+    }
+  }
 }

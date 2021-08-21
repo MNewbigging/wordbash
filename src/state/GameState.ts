@@ -8,11 +8,24 @@ export enum AnswerStatus {
   WARN = 'warn',
 }
 
+export enum AnswerLevel {
+  EASY = 'easy',
+  MED = 'med',
+  HARD = 'hard',
+  SUPER = 'super',
+}
+
+export interface Answer {
+  word: string;
+  level: AnswerLevel;
+  letterIds: string[];
+}
+
 export class GameState {
   @observable public letterPool: Letter[];
   @observable public answerWord: Letter[] = [];
   @observable public answerStatus = AnswerStatus.ENTER;
-  @observable public acceptedAnswers: string[] = [];
+  @observable public acceptedAnswers: Answer[] = [];
 
   constructor(letters: Letter[]) {
     this.letterPool = letters;
@@ -53,7 +66,6 @@ export class GameState {
       .map((l) => l.letter)
       .join('')
       .toLowerCase();
-    console.log('word: ', word);
 
     // Minimum answer length of 3
     if (word.length < 3) {
@@ -67,7 +79,6 @@ export class GameState {
 
     // Get the dictionary file for the word
     const dictionary = await (await this.getDictionary(dataPath)).split('\r\n');
-    console.log('file: ', dictionary);
 
     // Is the word in the dictionary?
     const exists = dictionary.some((w) => w === word);
@@ -77,16 +88,27 @@ export class GameState {
     }
 
     // Cannot have duplicate answers
-    if (this.acceptedAnswers.some((ans) => ans === word)) {
+    if (this.acceptedAnswers.some((ans) => ans.word === word)) {
       this.rejectAnswer();
       return;
     }
 
     // Accept the answer
-    this.acceptedAnswers.push(word);
-    this.answerWord.forEach((l) => (l.status = LetterStatus.INACTIVE));
-    this.answerWord = [];
+    this.acceptAnswer(word);
     // TODO Add to score, check for end game
+  }
+
+  @action public removeAnswer(answer: Answer) {
+    // Add answer's letters back into letter pool
+    answer.letterIds.forEach((id) => {
+      const letter = this.letterPool.find((l) => l.id === id);
+      if (letter) {
+        letter.status = LetterStatus.NORMAL;
+      }
+    });
+
+    // Remove the accepted answer
+    this.acceptedAnswers = this.acceptedAnswers.filter((ans) => ans.word !== answer.word);
   }
 
   @action private enableInteraction() {
@@ -114,6 +136,27 @@ export class GameState {
   @action private rejectAnswer() {
     this.answerStatus = AnswerStatus.WARN;
     setTimeout(() => (this.answerStatus = AnswerStatus.NORMAL), 1000);
+  }
+
+  @action private acceptAnswer(word: string) {
+    let level = AnswerLevel.EASY;
+    switch (true) {
+      case word.length > 10:
+        level = AnswerLevel.SUPER;
+        break;
+      case word.length > 7:
+        level = AnswerLevel.HARD;
+        break;
+      case word.length > 4:
+        level = AnswerLevel.MED;
+        break;
+    }
+
+    const letterIds = this.answerWord.map((l) => l.id);
+
+    this.acceptedAnswers.push({ word, level, letterIds });
+    this.answerWord.forEach((l) => (l.status = LetterStatus.INACTIVE));
+    this.answerWord = [];
   }
 
   private async getDictionary(filePath: string) {

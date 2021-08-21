@@ -1,13 +1,13 @@
 import { observer } from 'mobx-react';
 import React from 'react';
 
-import { GameState } from '../../../state/GameState';
+import { Answer, GameState } from '../../../state/GameState';
 import { Letter } from '../../../utils/LetterGenerator';
 import { AnswerInput } from './AnswerInput';
 import { LetterPool } from './LetterPool';
+import { AnswersList } from './AnswersList';
 
 import './game-screen-web.scss';
-import { AnswersList } from './AnswersList';
 
 interface Props {
   gameState: GameState;
@@ -39,7 +39,10 @@ export class GameScreenWeb extends React.Component<Props> {
         <div className={'score-area'}>SCORE - BUTTONS</div>
 
         <div className={'answers-area'}>
-          <AnswersList />
+          <AnswersList
+            answers={gameState.acceptedAnswers}
+            onRemove={(answer: Answer) => gameState.removeAnswer(answer)}
+          />
         </div>
       </div>
     );
