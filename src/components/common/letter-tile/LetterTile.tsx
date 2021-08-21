@@ -1,11 +1,17 @@
+import { observer } from 'mobx-react';
 import React from 'react';
+import { Letter } from '../../../utils/LetterGenerator';
 
 import './letter-tile.scss';
 
 interface Props {
-  letter: string;
+  letter: Letter;
 }
 
-export const LetterTile: React.FC<Props> = ({ letter }) => {
-  return <div className={'letter-tile'}>{letter}</div>;
-};
+export const LetterTile: React.FC<Props> = observer(({ letter }) => {
+  return (
+    <div className={'letter-tile ' + letter.status}>
+      <div className={'content'}>{letter.letter}</div>
+    </div>
+  );
+});

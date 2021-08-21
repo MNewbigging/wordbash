@@ -25,7 +25,7 @@ export class LetterPool extends React.Component<Props> {
             className={'letter-container'}
             style={{ animationDelay: `${maxAnimDelay - i * animDelayStep}s` }}
           >
-            <LetterTile letter={letter.letter} />
+            <LetterTile letter={letter} />
           </div>
         ))}
       </div>

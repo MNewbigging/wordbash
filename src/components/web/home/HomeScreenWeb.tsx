@@ -1,5 +1,6 @@
 import { observer } from 'mobx-react';
 import React from 'react';
+import { LetterStatus } from '../../../utils/LetterGenerator';
 
 import { LetterTile } from '../../common/letter-tile/LetterTile';
 
@@ -21,16 +22,16 @@ export class HomeScreenWeb extends React.Component<Props> {
       <div className={'home-screen-web'}>
         <div className={'title'}>
           <div className={'row top ' + exitingClass}>
-            <LetterTile letter={'W'} />
-            <LetterTile letter={'O'} />
-            <LetterTile letter={'R'} />
-            <LetterTile letter={'D'} />
+            <LetterTile letter={{ letter: 'W', status: LetterStatus.NORMAL }} />
+            <LetterTile letter={{ letter: 'O', status: LetterStatus.NORMAL }} />
+            <LetterTile letter={{ letter: 'R', status: LetterStatus.NORMAL }} />
+            <LetterTile letter={{ letter: 'D', status: LetterStatus.NORMAL }} />
           </div>
           <div className={'row bot ' + exitingClass}>
-            <LetterTile letter={'B'} />
-            <LetterTile letter={'A'} />
-            <LetterTile letter={'S'} />
-            <LetterTile letter={'H'} />
+            <LetterTile letter={{ letter: 'B', status: LetterStatus.NORMAL }} />
+            <LetterTile letter={{ letter: 'A', status: LetterStatus.NORMAL }} />
+            <LetterTile letter={{ letter: 'S', status: LetterStatus.NORMAL }} />
+            <LetterTile letter={{ letter: 'H', status: LetterStatus.NORMAL }} />
           </div>
         </div>
         <div className={'play ' + exitingClass} onClick={() => onPlay()}>

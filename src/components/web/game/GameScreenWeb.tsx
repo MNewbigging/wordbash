@@ -3,6 +3,7 @@ import React from 'react';
 
 import { GameState } from '../../../state/GameState';
 import { LetterTile } from '../../common/letter-tile/LetterTile';
+import { AnswerInput } from './AnswerInput';
 
 import './game-screen-web.scss';
 import { LetterPool } from './LetterPool';
@@ -21,8 +22,8 @@ export class GameScreenWeb extends React.Component<Props> {
         <div className={'letter-pool-area'}>
           <LetterPool letterPool={gameState.letterPool} />
         </div>
-        <div className={'answer-input'}>
-          <div className={'input-area'}>ANSWER INPUT</div>
+        <div className={'answer-input-area'}>
+          <AnswerInput answerWord={gameState.answerWord} />
         </div>
         <div className={'answer-area'}>
           <div className={'game-info'}>SCORE ~ BUTTONS</div>

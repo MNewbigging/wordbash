@@ -27,7 +27,7 @@ export class WordBashState {
 
   @action public playGame() {
     // Setup the game, with a fixed size for now
-    const gameSize = 30;
+    const gameSize = 40;
     const letterGenerator = new LetterGenerator();
     const letters = letterGenerator.generateLetters(gameSize);
 

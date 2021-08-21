@@ -25,27 +25,28 @@
     }
 
     .top {
-      animation: slideInRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+      animation: slideInRight 0.4s $animInCurve;
       animation-fill-mode: backwards;
 
       &.exiting {
-        animation: slideOutLeft 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        animation: slideOutLeft 0.8s $animOutCurve;
         animation-fill-mode: forwards;
       }
     }
 
     .bot {
-      animation: slideInLeft 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15) 0.4s;
+      animation: slideInLeft 0.4s $animInCurve 0.4s;
       animation-fill-mode: backwards;
 
       &.exiting {
-        animation: slideOutRight 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        animation: slideOutRight 0.8s $animOutCurve;
         animation-fill-mode: forwards;
       }
     }
   }
 
   .play {
+    user-select: none;
     width: 300px;
     height: 60px;
     border: 1px solid black;
