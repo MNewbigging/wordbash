@@ -44,7 +44,14 @@ export class WordBashState {
     this.homeScreenExiting = true;
 
     // Then show game screen after a delay to allow for above exit anim
-    setTimeout(() => (this.screen = WordBashScreen.GAME), 1000);
+    setTimeout(() => {
+      this.screen = WordBashScreen.GAME;
+      this.homeScreenExiting = false;
+    }, 1000);
+  }
+
+  @action public quitGame() {
+    this.screen = WordBashScreen.HOME;
   }
 
   @action private async loadWordData() {

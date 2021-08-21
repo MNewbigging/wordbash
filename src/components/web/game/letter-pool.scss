@@ -2,12 +2,6 @@
 
 .letter-pool {
   width: 100%;
-  box-sizing: border-box;
-  border: 1px solid black;
-
-  // padding-right: 12px;
-  // padding-bottom: 8px;
-
   display: flex;
   flex-wrap: wrap;
   flex-direction: row-reverse;

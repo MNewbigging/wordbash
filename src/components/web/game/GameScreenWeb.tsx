@@ -8,19 +8,23 @@ import { LetterPool } from './LetterPool';
 import { AnswersList } from './AnswersList';
 
 import './game-screen-web.scss';
+import { Navbar } from './Navbar';
 
 interface Props {
   gameState: GameState;
+  onQuit: () => void;
 }
 
 @observer
 export class GameScreenWeb extends React.Component<Props> {
   public render() {
-    const { gameState } = this.props;
+    const { gameState, onQuit } = this.props;
 
     return (
       <div className={'game-screen-web'}>
-        <div className={'score-area'}>SCORE - BUTTONS</div>
+        <div className={'score-area'}>
+          <Navbar wordCount={gameState.acceptedAnswers.length} onQuit={onQuit} />
+        </div>
 
         <div className={'letter-pool-area'}>
           <LetterPool

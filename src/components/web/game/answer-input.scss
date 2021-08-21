@@ -5,7 +5,9 @@
   height: 100%;
   padding: 10px;
   box-sizing: border-box;
+  border-radius: 5px;
   border: 1px solid black;
+  border-bottom: 6px solid grey;
 
   display: flex;
   justify-content: space-between;
@@ -23,6 +25,8 @@
   }
 
   .answer-word {
+    flex: 1 0 auto;
+    width: calc(100% - 30px);
     display: flex;
 
     .letter-container {

@@ -26,21 +26,21 @@
 
     .top {
       animation: slideInRight 0.4s $animInCurve;
-      animation-fill-mode: backwards;
+      animation-fill-mode: both;
 
       &.exiting {
         animation: slideOutLeft 0.8s $animOutCurve;
-        animation-fill-mode: forwards;
+        animation-fill-mode: both;
       }
     }
 
     .bot {
       animation: slideInLeft 0.4s $animInCurve 0.4s;
-      animation-fill-mode: backwards;
+      animation-fill-mode: both;
 
       &.exiting {
         animation: slideOutRight 0.8s $animOutCurve;
-        animation-fill-mode: forwards;
+        animation-fill-mode: both;
       }
     }
   }

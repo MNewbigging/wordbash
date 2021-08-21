@@ -140,10 +140,10 @@ export class GameState {
   @action private acceptAnswer(word: string) {
     let level = AnswerLevel.EASY;
     switch (true) {
-      case word.length > 10:
+      case word.length > 9:
         level = AnswerLevel.SUPER;
         break;
-      case word.length > 7:
+      case word.length > 6:
         level = AnswerLevel.HARD;
         break;
       case word.length > 4:
