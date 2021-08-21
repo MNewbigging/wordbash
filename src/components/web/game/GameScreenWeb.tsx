@@ -2,6 +2,7 @@ import { observer } from 'mobx-react';
 import React from 'react';
 
 import { GameState } from '../../../state/GameState';
+import { Letter } from '../../../utils/LetterGenerator';
 import { LetterTile } from '../../common/letter-tile/LetterTile';
 import { AnswerInput } from './AnswerInput';
 
@@ -20,10 +21,18 @@ export class GameScreenWeb extends React.Component<Props> {
     return (
       <div className={'game-screen-web'}>
         <div className={'letter-pool-area'}>
-          <LetterPool letterPool={gameState.letterPool} />
+          <LetterPool
+            letterPool={gameState.letterPool}
+            onSelectLetter={(letter: Letter) => gameState.addAnswerLetter(letter.letter)}
+          />
         </div>
         <div className={'answer-input-area'}>
-          <AnswerInput answerWord={gameState.answerWord} answerStatus={gameState.answerStatus} />
+          <AnswerInput
+            answerWord={gameState.answerWord}
+            answerStatus={gameState.answerStatus}
+            onAccept={() => gameState.validateAnswerWord()}
+            onRemoveLetter={(letter: Letter) => gameState.removeAnswerLetter(letter)}
+          />
         </div>
         <div className={'answer-area'}>
           <div className={'game-info'}>SCORE ~ BUTTONS</div>

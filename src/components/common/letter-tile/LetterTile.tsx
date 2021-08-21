@@ -7,11 +7,12 @@ import './letter-tile.scss';
 
 interface Props {
   letter: Letter;
+  onSelect?: (letter: Letter) => void;
 }
 
-export const LetterTile: React.FC<Props> = observer(({ letter }) => {
+export const LetterTile: React.FC<Props> = observer(({ letter, onSelect }) => {
   return (
-    <div className={'letter-tile ' + letter.status}>
+    <div className={'letter-tile ' + letter.status} onClick={() => onSelect(letter)}>
       <div className={'content'}>{letter.letter}</div>
     </div>
   );

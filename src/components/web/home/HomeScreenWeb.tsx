@@ -22,16 +22,16 @@ export class HomeScreenWeb extends React.Component<Props> {
       <div className={'home-screen-web'}>
         <div className={'title'}>
           <div className={'row top ' + exitingClass}>
-            <LetterTile letter={{ letter: 'W', status: LetterStatus.NORMAL }} />
-            <LetterTile letter={{ letter: 'O', status: LetterStatus.NORMAL }} />
-            <LetterTile letter={{ letter: 'R', status: LetterStatus.NORMAL }} />
-            <LetterTile letter={{ letter: 'D', status: LetterStatus.NORMAL }} />
+            <LetterTile letter={{ id: 'w', letter: 'W', status: LetterStatus.NORMAL }} />
+            <LetterTile letter={{ id: 'o', letter: 'O', status: LetterStatus.NORMAL }} />
+            <LetterTile letter={{ id: 'r', letter: 'R', status: LetterStatus.NORMAL }} />
+            <LetterTile letter={{ id: 'd', letter: 'D', status: LetterStatus.NORMAL }} />
           </div>
           <div className={'row bot ' + exitingClass}>
-            <LetterTile letter={{ letter: 'B', status: LetterStatus.NORMAL }} />
-            <LetterTile letter={{ letter: 'A', status: LetterStatus.NORMAL }} />
-            <LetterTile letter={{ letter: 'S', status: LetterStatus.NORMAL }} />
-            <LetterTile letter={{ letter: 'H', status: LetterStatus.NORMAL }} />
+            <LetterTile letter={{ id: 'b', letter: 'B', status: LetterStatus.NORMAL }} />
+            <LetterTile letter={{ id: 'a', letter: 'A', status: LetterStatus.NORMAL }} />
+            <LetterTile letter={{ id: 's', letter: 'S', status: LetterStatus.NORMAL }} />
+            <LetterTile letter={{ id: 'h', letter: 'H', status: LetterStatus.NORMAL }} />
           </div>
         </div>
         <div className={'play ' + exitingClass} onClick={() => onPlay()}>

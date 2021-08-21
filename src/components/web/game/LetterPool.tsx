@@ -8,12 +8,13 @@ import './letter-pool.scss';
 
 interface Props {
   letterPool: Letter[];
+  onSelectLetter: (letter: Letter) => void;
 }
 
 @observer
 export class LetterPool extends React.Component<Props> {
   public render() {
-    const { letterPool } = this.props;
+    const { letterPool, onSelectLetter } = this.props;
 
     const animDelayStep = 0.1;
     const maxAnimDelay = letterPool.length * animDelayStep;
@@ -25,7 +26,7 @@ export class LetterPool extends React.Component<Props> {
             className={'letter-container'}
             style={{ animationDelay: `${maxAnimDelay - i * animDelayStep}s` }}
           >
-            <LetterTile letter={letter} />
+            <LetterTile letter={letter} onSelect={(letter: Letter) => onSelectLetter(letter)} />
           </div>
         ))}
       </div>

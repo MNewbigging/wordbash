@@ -22,6 +22,7 @@ export enum LetterStatus {
 }
 
 export interface Letter {
+  id: string;
   letter: string;
   status: LetterStatus;
 }
@@ -62,6 +63,7 @@ export class LetterGenerator {
     const letters: Letter[] = [];
     for (let i = 0; i < shuffledLetters.length; i++) {
       letters.push({
+        id: i.toString(),
         letter: shuffledLetters[i],
         status: LetterStatus.NORMAL,
       });
