@@ -11,8 +11,11 @@ interface Props {
 }
 
 export const LetterTile: React.FC<Props> = observer(({ letter, onSelect }) => {
+  const selectable = onSelect ? 'selectable' : '';
+  const letterClasses = ['letter-tile', letter.status, selectable];
+
   return (
-    <div className={'letter-tile ' + letter.status} onClick={() => onSelect(letter)}>
+    <div className={letterClasses.join(' ')} onClick={() => onSelect(letter)}>
       <div className={'content'}>{letter.letter}</div>
     </div>
   );

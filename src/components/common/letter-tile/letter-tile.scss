@@ -18,6 +18,10 @@
 
   background-color: #ee1246;
 
+  &.selectable {
+    cursor: pointer;
+  }
+
   &.inactive {
     animation: spin 4s linear infinite;
   }

@@ -3,11 +3,10 @@ import React from 'react';
 
 import { GameState } from '../../../state/GameState';
 import { Letter } from '../../../utils/LetterGenerator';
-import { LetterTile } from '../../common/letter-tile/LetterTile';
 import { AnswerInput } from './AnswerInput';
+import { LetterPool } from './LetterPool';
 
 import './game-screen-web.scss';
-import { LetterPool } from './LetterPool';
 
 interface Props {
   gameState: GameState;

@@ -24,7 +24,7 @@ export class AnswerInput extends React.Component<Props> {
         <div className={'answer-word'}>
           {answerWord.length > 0 &&
             answerWord.map((letter) => (
-              <div className={'letter-container'}>
+              <div key={'answer-' + letter.id} className={'letter-container'}>
                 <LetterTile letter={letter} onSelect={(letter: Letter) => onRemoveLetter(letter)} />
               </div>
             ))}

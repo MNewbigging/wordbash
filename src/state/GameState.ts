@@ -12,6 +12,7 @@ export class GameState {
   @observable public letterPool: Letter[];
   @observable public answerWord: Letter[] = [];
   @observable public answerStatus = AnswerStatus.ENTER;
+  @observable public acceptedAnswers: string[] = [];
 
   constructor(letters: Letter[]) {
     this.letterPool = letters;
@@ -41,12 +42,46 @@ export class GameState {
     }
   }
 
-  public validateAnswerWord() {
+  @action public async validateAnswerWord() {
     if (!this.answerWord.length) {
-      this.answerStatus = AnswerStatus.WARN;
-      setTimeout(() => (this.answerStatus = AnswerStatus.NORMAL), 1000);
+      this.rejectAnswer();
       return;
     }
+
+    // Get the word
+    const word = this.answerWord.map((l) => l.letter).join('');
+    console.log('word: ', word);
+
+    // Minimum answer length of 3
+    if (word.length < 3) {
+      this.rejectAnswer();
+      return;
+    }
+
+    // TODO - allow for published site
+    // Get the path to word data
+    const dataPath = `dist/word-data/${word[0]}.txt`;
+
+    // Get the dictionary file for the word
+    const dictionary = await (await this.getDictionary(dataPath)).split('\r\n');
+    console.log('file: ', dictionary);
+
+    // Is the word in the dictionary?
+    const exists = dictionary.some((w) => w === word);
+    if (!exists) {
+      this.rejectAnswer();
+    }
+
+    // Cannot have duplicate answers
+    if (this.acceptedAnswers.some((ans) => ans === word)) {
+      this.rejectAnswer();
+    }
+
+    // Accept the answer
+    this.acceptedAnswers.push(word);
+    this.answerWord.forEach((l) => (l.status = LetterStatus.INACTIVE));
+    this.answerWord = [];
+    // TODO Add to score, check for end game
   }
 
   @action private enableInteraction() {
@@ -70,4 +105,15 @@ export class GameState {
         break;
     }
   };
+
+  @action private rejectAnswer() {
+    this.answerStatus = AnswerStatus.WARN;
+    setTimeout(() => (this.answerStatus = AnswerStatus.NORMAL), 1000);
+  }
+
+  private async getDictionary(filePath: string) {
+    const response = await fetch(filePath);
+
+    return response.text();
+  }
 }

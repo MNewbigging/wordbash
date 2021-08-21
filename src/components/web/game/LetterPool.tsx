@@ -23,6 +23,7 @@ export class LetterPool extends React.Component<Props> {
       <div className={'letter-pool'}>
         {letterPool.map((letter, i) => (
           <div
+            key={'letter-' + letter.id}
             className={'letter-container'}
             style={{ animationDelay: `${maxAnimDelay - i * animDelayStep}s` }}
           >
