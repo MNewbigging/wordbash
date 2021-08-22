@@ -9,10 +9,9 @@ export enum AnswerStatus {
 }
 
 export enum AnswerLevel {
-  EASY = 'easy',
-  MED = 'med',
-  HARD = 'hard',
-  SUPER = 'super',
+  SHORT = 'short',
+  MEDIUM = 'medium',
+  LONG = 'long',
 }
 
 export interface Answer {
@@ -138,16 +137,13 @@ export class GameState {
   }
 
   @action private acceptAnswer(word: string) {
-    let level = AnswerLevel.EASY;
+    let level = AnswerLevel.SHORT;
     switch (true) {
-      case word.length > 9:
-        level = AnswerLevel.SUPER;
+      case word.length > 8:
+        level = AnswerLevel.LONG;
         break;
-      case word.length > 6:
-        level = AnswerLevel.HARD;
-        break;
-      case word.length > 4:
-        level = AnswerLevel.MED;
+      case word.length > 5:
+        level = AnswerLevel.MEDIUM;
         break;
     }
 

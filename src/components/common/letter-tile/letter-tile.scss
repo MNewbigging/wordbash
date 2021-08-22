@@ -11,12 +11,11 @@
   color: white;
 
   box-sizing: border-box;
-  //border: 1px solid black;
-  border-radius: 10px;
-  box-shadow: 1px 1px 1px 1px rgb(105, 105, 105);
+  border-radius: 5px;
+  //box-shadow: 1px 1px 1px 1px rgb(105, 105, 105);
   //box-shadow: inset 0px 0px 2px 2px white;
-
-  background-color: #ee1246;
+  transition: background-color 0.1s linear;
+  background-color: #eb251e;
 
   &.selectable {
     cursor: pointer;
@@ -29,7 +28,7 @@
   }
 
   &.active {
-    background-color: gold;
+    background-color: #f49301;
   }
 }
 

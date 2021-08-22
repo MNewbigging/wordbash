@@ -11,9 +11,8 @@
 
   .answer {
     margin: 5px;
-    padding: 5px;
+    padding: 5px 10px;
     box-sizing: border-box;
-    border: 1px solid black;
     border-radius: 5px;
     user-select: none;
     cursor: pointer;
@@ -21,20 +20,16 @@
     color: white;
     font-size: 2rem;
 
-    &.easy {
-      background-color: green;
+    &.short {
+      background-color: #57886c;
     }
 
-    &.med {
-      background-color: blue;
+    &.medium {
+      background-color: #38405f;
     }
 
-    &.hard {
-      background-color: purple;
-    }
-
-    &.super {
-      background-color: gold;
+    &.long {
+      background-color: #832161;
     }
   }
 }
