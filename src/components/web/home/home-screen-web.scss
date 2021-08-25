@@ -46,17 +46,9 @@
   }
 
   .play {
-    user-select: none;
     width: 300px;
     height: 60px;
-    border: 1px solid black;
-    border-bottom: 6px solid grey;
-    border-radius: 5px;
     margin-top: 5px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-size: 2rem;
 
     transition: all 0.1s linear;

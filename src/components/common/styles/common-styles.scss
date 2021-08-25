@@ -1,0 +1,21 @@
+@import './palette.scss';
+
+.button {
+  user-select: none;
+  box-sizing: border-box;
+  border: 1px solid black;
+  border-bottom: 6px solid $tileBaseColour;
+  border-radius: 5px;
+  margin: 5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: all 0.15s linear;
+
+  &:hover {
+    cursor: pointer;
+    border-bottom: 6px solid $tileActiveColour;
+  }
+}

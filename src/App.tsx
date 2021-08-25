@@ -5,6 +5,7 @@ import { ViewMode, WordBashState } from './state/WordBashState';
 import { WordBashWeb } from './components/web/WordBashWeb';
 
 import './app.scss';
+import './components/common/styles/common-styles.scss';
 
 @observer
 export class App extends React.PureComponent {

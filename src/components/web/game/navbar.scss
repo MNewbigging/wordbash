@@ -48,19 +48,9 @@
   }
 
   .button {
-    user-select: none;
-    cursor: pointer;
     height: 50px;
     width: fit-content;
-    box-sizing: border-box;
     padding: 5px;
-    border: 1px solid black;
-    border-bottom: 6px solid grey;
-    border-radius: 5px;
     font-size: 2rem;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
