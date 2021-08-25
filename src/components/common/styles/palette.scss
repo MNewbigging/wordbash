@@ -1,7 +1,11 @@
 $tileBaseColour: #56766b;
 $tileActiveColour: #c59849;
-$tileMedLengthColour: #38405f;
-$tileLongLengthColour: #832161;
+$tileMedLengthColour: #444d74;
+$tileLongLengthColour: #93256c;
 
-$borderColour: black;
-$borderBotColour: grey;
+$borderColour: #1e1f1e;
+$borderBotColour: $tileBaseColour;
+
+$textColour: white;
+
+$answerWarnColour: #ed0707;

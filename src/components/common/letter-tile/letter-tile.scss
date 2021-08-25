@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
 @import '../styles/palette.scss';
 
 .letter-tile {
@@ -9,8 +10,9 @@
   justify-content: center;
   align-items: center;
 
+  font-family: 'Raleway', sans-serif;
   font-size: 2em;
-  color: white;
+  color: $textColour;
 
   box-sizing: border-box;
   border-radius: 5px;
