@@ -44,15 +44,24 @@
   }
 
   .accept-button {
-    width: 30px;
+    width: 40px;
     height: 30px;
     margin-left: 3px;
     box-sizing: border-box;
-    border: 1px solid $borderColour;
+    border-radius: 5px;
+    font-size: 2rem;
+    background-color: $tileBaseColour;
+    color: $textColour;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     user-select: none;
+
+    transition: background-color 0.15s linear;
+
+    &:hover {
+      background-color: $tileActiveColour;
+    }
   }
 }
