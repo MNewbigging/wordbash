@@ -15,7 +15,7 @@
   //box-shadow: 1px 1px 1px 1px rgb(105, 105, 105);
   //box-shadow: inset 0px 0px 2px 2px white;
   transition: background-color 0.1s linear;
-  background-color: #eb251e;
+  background-color: #56766b;
 
   &.selectable {
     cursor: pointer;
@@ -27,8 +27,9 @@
     animation: spin 4s linear infinite;
   }
 
+  &:hover,
   &.active {
-    background-color: #f49301;
+    background-color: #c59849;
   }
 }
 
