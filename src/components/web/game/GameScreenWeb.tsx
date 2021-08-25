@@ -29,7 +29,7 @@ export class GameScreenWeb extends React.Component<Props> {
         <div className={'letter-pool-area'}>
           <LetterPool
             letterPool={gameState.letterPool}
-            onSelectLetter={(letter: Letter) => gameState.addAnswerLetter(letter.letter)}
+            onSelectLetter={(letter: Letter) => gameState.selectLetter(letter)}
           />
         </div>
 

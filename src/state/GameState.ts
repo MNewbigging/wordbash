@@ -36,17 +36,13 @@ export class GameState {
     const interactionDelay = 6000;
     setTimeout(() => this.enableInteraction(), interactionDelay);
   }
-  @action public addAnswerLetter(key: string) {
-    // Check a letter is available for the typed key
-    const letter = this.letterPool.find(
-      (l) => l.letter.toLowerCase() === key.toLowerCase() && l.status === LetterStatus.NORMAL
-    );
-    if (!letter) {
-      return;
-    }
 
-    letter.status = LetterStatus.ACTIVE;
-    this.answerWord.push(letter);
+  @action public selectLetter(letter: Letter) {
+    // Is letter able to be added
+    if (letter.status === LetterStatus.NORMAL) {
+      letter.status = LetterStatus.ACTIVE;
+      this.answerWord.push(letter);
+    }
   }
 
   @action public removeAnswerLetter(letter: Letter) {
@@ -126,10 +122,21 @@ export class GameState {
         this.validateAnswerWord();
         break;
       default:
-        this.addAnswerLetter(key);
+        this.typeLetter(key);
         break;
     }
   };
+
+  private typeLetter(key: string) {
+    // Is there a valid letter for this key?
+    const letter = this.letterPool.find(
+      (l) => l.letter.toLowerCase() === key.toLowerCase() && l.status === LetterStatus.NORMAL
+    );
+
+    if (letter) {
+      this.selectLetter(letter);
+    }
+  }
 
   @action private rejectAnswer() {
     this.answerStatus = AnswerStatus.WARN;
