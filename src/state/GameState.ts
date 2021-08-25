@@ -6,6 +6,7 @@ export enum AnswerStatus {
   ENTER = 'enter',
   NORMAL = 'normal',
   WARN = 'warn',
+  ACCEPT = 'accept',
 }
 
 export enum AnswerLevel {
@@ -155,9 +156,11 @@ export class GameState {
     }
 
     const letterIds = this.answerWord.map((l) => l.id);
-
     this.acceptedAnswers.push({ word, level, letterIds });
     this.answerWord.forEach((l) => (l.status = LetterStatus.INACTIVE));
     this.answerWord = [];
+
+    this.answerStatus = AnswerStatus.ACCEPT;
+    setTimeout(() => (this.answerStatus = AnswerStatus.NORMAL), 300);
   }
 }

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
 @import '../styles/palette.scss';
+@import '../styles/animations.scss';
 
 .letter-tile {
   width: 100%;
@@ -18,7 +19,7 @@
   border-radius: 5px;
   //box-shadow: 1px 1px 1px 1px rgb(105, 105, 105);
   //box-shadow: inset 0px 0px 2px 2px white;
-  transition: background-color 0.1s linear;
+  transition: all 0.1s linear;
   background-color: $tileBaseColour;
 
   &.selectable {
@@ -28,23 +29,11 @@
   &.inactive {
     width: 20%;
     height: 20%;
-    animation: spin 4s linear infinite;
+    animation: pulse 4s linear infinite;
   }
 
   &:hover,
   &.active {
     background-color: $tileActiveColour;
-  }
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg) scale(0.95);
-  }
-  50% {
-    transform: rotate(180deg) scale(1.2);
-  }
-  100% {
-    transform: rotate(360deg) scale(0.95);
   }
 }

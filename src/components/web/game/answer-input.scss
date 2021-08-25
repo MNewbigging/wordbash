@@ -9,7 +9,7 @@
   border-radius: 5px;
   border: 1px solid $borderColour;
   border-bottom: 6px solid $borderBotColour;
-  transition: border-bottom 0.15s linear;
+  transition: border-bottom 0.1s linear;
 
   display: flex;
   justify-content: space-between;
@@ -25,6 +25,10 @@
     animation: shakeSide 0.82s $shakeCurve;
     animation-fill-mode: forwards;
     border-bottom: 6px solid $answerWarnColour;
+  }
+
+  &.accept {
+    border-bottom: 6px solid $tileActiveColour;
   }
 
   .answer-word {
