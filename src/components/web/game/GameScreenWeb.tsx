@@ -9,6 +9,7 @@ import { AnswersList } from './AnswersList';
 
 import './game-screen-web.scss';
 import { Navbar } from './Navbar';
+import { HelpDialog } from './HelpDialog';
 
 interface Props {
   gameState: GameState;
@@ -22,8 +23,17 @@ export class GameScreenWeb extends React.Component<Props> {
 
     return (
       <div className={'game-screen-web'}>
+        <HelpDialog
+          status={gameState.helpDialogStatus}
+          onClose={() => gameState.closeHelpDialog()}
+        />
+
         <div className={'score-area'}>
-          <Navbar wordCount={gameState.acceptedAnswers.length} onQuit={onQuit} />
+          <Navbar
+            wordCount={gameState.acceptedAnswers.length}
+            onQuit={onQuit}
+            onHelp={() => gameState.openHelpDialog()}
+          />
         </div>
 
         <div className={'letter-pool-area'}>

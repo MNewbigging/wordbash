@@ -6,12 +6,13 @@ import './navbar.scss';
 interface Props {
   wordCount: number;
   onQuit: () => void;
+  onHelp: () => void;
 }
 
 @observer
 export class Navbar extends React.Component<Props> {
   public render() {
-    const { wordCount, onQuit } = this.props;
+    const { wordCount, onQuit, onHelp } = this.props;
 
     return (
       <div className={'navbar'}>
@@ -24,7 +25,9 @@ export class Navbar extends React.Component<Props> {
           <div className={'score'}>{`Words: ${wordCount}`}</div>
         </div>
         <div className={'help'}>
-          <div className={'button'}>help</div>
+          <div className={'button'} onClick={() => onHelp()}>
+            help
+          </div>
         </div>
       </div>
     );

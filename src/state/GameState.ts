@@ -2,9 +2,16 @@ import { action, observable } from 'mobx';
 import { keyboardObserver } from '../utils/KeyboardObserver';
 import { Letter, LetterStatus } from '../utils/LetterGenerator';
 
+export enum DialogStatus {
+  ENTER = 'enter',
+  OPEN = 'open',
+  EXIT = 'exit',
+  CLOSED = 'closed',
+}
+
 export enum AnswerStatus {
   ENTER = 'enter',
-  NORMAL = 'normal',
+  OPEN = 'open',
   WARN = 'warn',
   ACCEPT = 'accept',
 }
@@ -26,6 +33,7 @@ export class GameState {
   @observable public answerWord: Letter[] = [];
   @observable public answerStatus = AnswerStatus.ENTER;
   @observable public acceptedAnswers: Answer[] = [];
+  @observable public helpDialogStatus = DialogStatus.CLOSED;
 
   private wordData: Map<string, Set<string>>;
 
@@ -36,6 +44,16 @@ export class GameState {
     // This value needs to allow for AnswerInput enter animation time
     const interactionDelay = 6000;
     setTimeout(() => this.enableInteraction(), interactionDelay);
+  }
+
+  @action public openHelpDialog() {
+    this.helpDialogStatus = DialogStatus.ENTER;
+    setTimeout(() => (this.helpDialogStatus = DialogStatus.OPEN), 500);
+  }
+
+  @action public closeHelpDialog() {
+    this.helpDialogStatus = DialogStatus.EXIT;
+    //setTimeout(() => (this.helpDialogStatus = DialogStatus.CLOSED), 500);
   }
 
   @action public selectLetter(letter: Letter) {
@@ -108,7 +126,7 @@ export class GameState {
 
   @action private enableInteraction() {
     keyboardObserver.addKeyListener(this.onKeyPress);
-    this.answerStatus = AnswerStatus.NORMAL;
+    this.answerStatus = AnswerStatus.OPEN;
   }
 
   private readonly onKeyPress = (key: string) => {
@@ -141,7 +159,7 @@ export class GameState {
 
   @action private rejectAnswer() {
     this.answerStatus = AnswerStatus.WARN;
-    setTimeout(() => (this.answerStatus = AnswerStatus.NORMAL), 1000);
+    setTimeout(() => (this.answerStatus = AnswerStatus.OPEN), 1000);
   }
 
   @action private acceptAnswer(word: string) {
@@ -161,6 +179,6 @@ export class GameState {
     this.answerWord = [];
 
     this.answerStatus = AnswerStatus.ACCEPT;
-    setTimeout(() => (this.answerStatus = AnswerStatus.NORMAL), 300);
+    setTimeout(() => (this.answerStatus = AnswerStatus.OPEN), 300);
   }
 }
