@@ -15,8 +15,6 @@ export class HelpDialog extends React.Component<Props> {
   public render() {
     const { status, onClose } = this.props;
 
-    console.log('dialog status: ', status);
-
     return (
       <div className={'help-dialog ' + status}>
         <div className={'content'}>

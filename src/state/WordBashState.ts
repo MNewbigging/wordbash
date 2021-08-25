@@ -59,12 +59,20 @@ export class WordBashState {
     const letters = alphabet.split('');
     const wordsMap = new Map<string, Set<string>>();
 
-    // TODO - allow for published site path
-    const basePath = 'dist/word-data/';
+    // Path depends on if running locally or published site
+    let basePath = window.location.href;
+
+    if (window.location.href.includes('localhost')) {
+      basePath += 'dist/word-data/';
+    } else {
+      basePath += 'word-data/';
+    }
 
     for await (const letter of letters) {
       const filePath = basePath + `${letter}.txt`;
-      const dictionary = await (await this.getDictionary(filePath)).split('\r\n');
+      const dictionary = await (await this.getDictionary(filePath))
+        .replace(/(\r\n|\n|\r|\n\n|\r\n\n)/gm, ':')
+        .split(':');
       const set = new Set<string>(dictionary);
       wordsMap.set(letter, set);
     }

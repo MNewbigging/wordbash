@@ -37,7 +37,7 @@ export class HomeScreenWeb extends React.Component<Props> {
         </div>
 
         {loading ? (
-          <div className={'play ' + exitingClass}>loading</div>
+          <div className={'loading button'}>loading</div>
         ) : (
           <div className={'play button ' + exitingClass} onClick={() => onPlay()}>
             play
