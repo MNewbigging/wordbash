@@ -34,6 +34,7 @@ export class GameState {
   @observable public answerStatus = AnswerStatus.ENTER;
   @observable public acceptedAnswers: Answer[] = [];
   @observable public helpDialogStatus = DialogStatus.CLOSED;
+  @observable public gameOver = false;
 
   private wordData: Map<string, Set<string>>;
 
@@ -108,7 +109,9 @@ export class GameState {
 
     // Accept the answer
     this.acceptAnswer(word);
-    // TODO Add to score, check for end game
+
+    // Has the game now ended?
+    this.checkEndGame();
   }
 
   @action public removeAnswer(answer: Answer) {
@@ -180,5 +183,16 @@ export class GameState {
 
     this.answerStatus = AnswerStatus.ACCEPT;
     setTimeout(() => (this.answerStatus = AnswerStatus.OPEN), 300);
+  }
+
+  private checkEndGame() {
+    // If any letters are still available, game is still going
+    const available = this.letterPool.filter((l) => l.status !== LetterStatus.INACTIVE);
+    if (available && available.length) {
+      return;
+    }
+
+    // Otherwise, game has ended
+    this.gameOver = true;
   }
 }

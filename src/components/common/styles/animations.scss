@@ -125,3 +125,17 @@ $shakeCurve: cubic-bezier(0.36, 0.07, 0.19, 0.97);
     transform: scale(1);
   }
 }
+
+@keyframes letterExit {
+  0% {
+    transform: translateY(0px) scale(0.9);
+  }
+
+  5% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: translateY(-1000px);
+  }
+}

@@ -40,6 +40,7 @@ export class GameScreenWeb extends React.Component<Props> {
           <LetterPool
             letterPool={gameState.letterPool}
             onSelectLetter={(letter: Letter) => gameState.selectLetter(letter)}
+            exitAnim={gameState.gameOver}
           />
         </div>
 
