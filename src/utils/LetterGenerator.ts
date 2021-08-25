@@ -54,17 +54,21 @@ export class LetterGenerator {
     const gameConsonants: string = this.generateConsonants(consonants, poolSize, vowelCount);
 
     // Joins vowels and consonants strings and shuffles
-    const shuffledLetters: string = this.shuffleLetters(gameVowels, gameConsonants);
+    const shuffledLetters: string = this.shuffleLetters(gameVowels + gameConsonants);
+
+    // Perform final validation on chosen letters
+    const finalLetters: string = this.validateLetters(shuffledLetters);
 
     // Cache values (in order to get smart extra vowels/consonants during game)
     this.gameConsonants = gameConsonants;
-    this.gameLetters = shuffledLetters;
+    this.gameLetters = finalLetters;
 
+    // Create the letter objects and return
     const letters: Letter[] = [];
-    for (let i = 0; i < shuffledLetters.length; i++) {
+    for (let i = 0; i < finalLetters.length; i++) {
       letters.push({
         id: i.toString(),
-        letter: shuffledLetters[i],
+        letter: finalLetters[i],
         status: LetterStatus.NORMAL,
       });
     }
@@ -96,7 +100,7 @@ export class LetterGenerator {
       consonants += Consonants.RARE;
     }
 
-    return consonants;
+    return this.shuffleLetters(consonants);
   }
 
   // Gets random vowel count, within range, based on letter pool size
@@ -126,8 +130,7 @@ export class LetterGenerator {
   }
 
   // Generated letters will be all vowels, all consonants - this shuffles them
-  private shuffleLetters(vowels: string, consonants: string) {
-    const letters = vowels + consonants;
+  private shuffleLetters(letters: string) {
     const letterArr: string[] = letters.split('');
     const count = letterArr.length;
     for (let i: number = 0; i < count; i++) {
@@ -137,5 +140,27 @@ export class LetterGenerator {
       letterArr[swapIdx] = tmp;
     }
     return letterArr.join('');
+  }
+
+  private validateLetters(letters: string) {
+    // We cannot have a Q without a U!
+
+    const lettersArr = letters.split('');
+    const qCount = lettersArr.filter((l) => l === 'Q').length;
+    let uCount = lettersArr.filter((l) => l === 'U').length;
+
+    while (uCount < qCount) {
+      // Replace first non-U, non-Q letter with a U
+      for (let i = 0; i < lettersArr.length; i++) {
+        const letter = lettersArr[i];
+        if (letter !== 'U' && letter !== 'Q') {
+          lettersArr[i] = 'U';
+          uCount++;
+          break;
+        }
+      }
+    }
+
+    return lettersArr.join('');
   }
 }
