@@ -43,7 +43,7 @@ export class GameState {
     this.wordData = wordData;
 
     // This value needs to allow for AnswerInput enter animation time
-    const interactionDelay = 5000;
+    const interactionDelay = 6000;
     setTimeout(() => this.enableInteraction(), interactionDelay);
   }
 
