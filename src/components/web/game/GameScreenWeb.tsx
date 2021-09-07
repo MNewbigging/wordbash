@@ -6,10 +6,10 @@ import { Letter } from '../../../utils/LetterGenerator';
 import { AnswerInput } from './AnswerInput';
 import { LetterPool } from './LetterPool';
 import { AnswersList } from './AnswersList';
-
-import './game-screen-web.scss';
 import { Navbar } from './Navbar';
 import { HelpDialog } from './HelpDialog';
+
+import './game-screen-web.scss';
 
 interface Props {
   gameState: GameState;
