@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react';
 import React from 'react';
 
-import { Letter, LetterStatus } from '../../../utils/LetterGenerator';
+import { Letter, LetterStatus } from '../../../model/Letter';
 
 import './letter-tile.scss';
 

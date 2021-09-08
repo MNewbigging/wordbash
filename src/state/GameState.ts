@@ -1,6 +1,6 @@
 import { action, observable } from 'mobx';
 import { keyboardObserver } from '../utils/KeyboardObserver';
-import { Letter, LetterStatus } from '../utils/LetterGenerator';
+import { Letter, LetterStatus } from '../model/Letter';
 
 export enum DialogStatus {
   ENTER = 'enter',

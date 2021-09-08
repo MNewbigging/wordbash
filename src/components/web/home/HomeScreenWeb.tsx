@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { LetterStatus } from '../../../utils/LetterGenerator';
+import { LetterStatus } from '../../../model/Letter';
 
 import { LetterTile } from '../../common/letter-tile/LetterTile';
 
