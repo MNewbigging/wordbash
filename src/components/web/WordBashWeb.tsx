@@ -14,20 +14,16 @@ export class WordBashWeb extends React.Component<Props> {
   public render() {
     const { wbState } = this.props;
 
-    if (wbState.screen === WordBashScreen.HOME) {
-      return (
-        <HomeScreenWeb
-          onPlay={() => wbState.playGame()}
-          exiting={wbState.homeScreenExiting}
-          loading={wbState.loading}
-        />
-      );
-    }
-
     if (wbState.screen === WordBashScreen.GAME && wbState.gameState) {
       return <GameScreenWeb gameState={wbState.gameState} onQuit={() => wbState.quitGame()} />;
     }
 
-    return <div></div>;
+    return (
+      <HomeScreenWeb
+        onPlay={() => wbState.playGame()}
+        exiting={wbState.homeScreenExiting}
+        loading={wbState.loading}
+      />
+    );
   }
 }
