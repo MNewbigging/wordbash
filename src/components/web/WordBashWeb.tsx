@@ -16,14 +16,13 @@ export class WordBashWeb extends React.Component<Props> {
 
     if (wbState.screen === WordBashScreen.GAME && wbState.gameState) {
       return <GameScreenWeb gameState={wbState.gameState} onQuit={() => wbState.quitGame()} />;
-    } else {
-      return (
-        <HomeScreenWeb
-          onPlay={() => wbState.playGame()}
-          exiting={wbState.homeScreenExiting}
-          loading={wbState.loading}
-        />
-      );
     }
+    return (
+      <HomeScreenWeb
+        onPlay={() => wbState.playGame()}
+        exiting={wbState.homeScreenExiting}
+        loading={wbState.loading}
+      />
+    );
   }
 }
