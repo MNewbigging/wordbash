@@ -1,6 +1,7 @@
 import { observer } from 'mobx-react';
 import React from 'react';
 import { LetterStatus } from '../../../model/Letter';
+import { Button } from '../../common/button/Button';
 
 import { LetterTile } from '../../common/letter-tile/LetterTile';
 
@@ -36,13 +37,7 @@ export class HomeScreenWeb extends React.Component<Props> {
           </div>
         </div>
 
-        {loading ? (
-          <div className={'loading button'}>loading</div>
-        ) : (
-          <div className={'play button ' + exitingClass} onClick={() => onPlay()}>
-            play
-          </div>
-        )}
+        <Button onPlay={() => onPlay()} exiting={exiting} loading={loading} />
       </div>
     );
   }

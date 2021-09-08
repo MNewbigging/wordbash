@@ -1,0 +1,28 @@
+.button {
+  width: 300px;
+  height: 60px;
+  margin-top: 5px;
+  font-size: 2rem;
+
+  transition: all 0.1s linear;
+  animation: slideInUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.05) 0.8s;
+  animation-fill-mode: backwards;
+
+  &.loading {
+  }
+
+  &.play {
+    &:hover {
+      margin-top: 0px;
+      width: 310px;
+      height: 65px;
+      font-size: 2.1rem;
+      cursor: pointer;
+    }
+
+    &.exiting {
+      animation: slideOutDown 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s;
+      animation-fill-mode: forwards;
+    }
+  }
+}
