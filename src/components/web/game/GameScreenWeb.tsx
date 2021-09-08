@@ -2,7 +2,7 @@ import { observer } from 'mobx-react';
 import React from 'react';
 
 import { Answer, GameState } from '../../../state/GameState';
-import { Letter } from '../../../utils/LetterGenerator';
+import { Letter } from '../../../model/Letter';
 import { AnswerInput } from './AnswerInput';
 import { LetterPool } from './LetterPool';
 import { AnswersList } from './AnswersList';

@@ -1,3 +1,5 @@
+import { Letter, LetterStatus } from '../model/Letter';
+
 enum Vowels {
   ALL = 'AEIOU',
 }
@@ -13,18 +15,6 @@ export interface ConsonantsWeight {
   common: number;
   uncommon: number;
   rare: number;
-}
-
-export enum LetterStatus {
-  INACTIVE = 'inactive',
-  NORMAL = 'normal',
-  ACTIVE = 'active',
-}
-
-export interface Letter {
-  id: string;
-  letter: string;
-  status: LetterStatus;
 }
 
 export class LetterGenerator {
