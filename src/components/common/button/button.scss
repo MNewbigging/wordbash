@@ -1,35 +1,22 @@
 @import '../styles/palette.scss';
 
 .button {
-  width: 300px;
-  height: 60px;
-  margin-top: 5px;
-  font-size: 2rem;
-  background-color: white;
+  user-select: none;
+  box-sizing: border-box;
+  border: 1px solid $borderColour;
+  border-bottom: 6px solid $borderBotColour;
+  border-radius: 5px;
+  margin: 5px;
+  color: $borderColour;
 
-  transition: all 0.1s linear;
-  animation: slideInUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.05) 0.8s;
-  animation-fill-mode: backwards;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  &.loading {
-    &:hover {
-      cursor: default;
-      border-bottom: 6px solid $borderBotColour;
-    }
-  }
+  transition: all 0.15s linear;
 
-  &.play {
-    &:hover {
-      margin-top: 0px;
-      width: 310px;
-      height: 65px;
-      font-size: 2.1rem;
-      cursor: pointer;
-    }
-
-    &.exiting {
-      animation: slideOutDown 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s;
-      animation-fill-mode: forwards;
-    }
+  &:hover {
+    cursor: pointer;
+    border-bottom: 6px solid $tileActiveColour;
   }
 }

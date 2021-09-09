@@ -4,19 +4,21 @@ import React from 'react';
 import './button.scss';
 
 interface ButtonProps {
-  onPlay: () => void;
-  exiting: boolean;
-  loading: boolean;
+  onClick: () => void;
+  buttonText: string;
+  className?: string;
+  exiting?: boolean;
+  loading?: boolean;
 }
 
 @observer
 export class Button extends React.PureComponent<ButtonProps> {
   public render() {
-    const { onPlay, exiting, loading } = this.props;
+    const { onClick, className, exiting, loading, buttonText } = this.props;
 
-    const buttonText = loading ? 'loading' : 'play';
+    const btnText = loading ? 'loading' : buttonText;
     const exitingClass = exiting ? 'exiting' : '';
-    const buttonClass = loading ? 'loading' : 'play';
+    const buttonClass = loading ? 'loading' : className;
     const buttonClasses = ['button', exitingClass, buttonClass];
 
     return (
@@ -24,11 +26,11 @@ export class Button extends React.PureComponent<ButtonProps> {
         className={buttonClasses.join(' ')}
         onClick={() => {
           if (!loading) {
-            onPlay();
+            onClick();
           }
         }}
       >
-        {buttonText}
+        {btnText}
       </button>
     );
   }
