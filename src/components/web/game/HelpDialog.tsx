@@ -2,6 +2,7 @@ import { observer } from 'mobx-react';
 import React from 'react';
 
 import { DialogStatus } from '../../../state/GameState';
+import { Button } from '../../common/button/Button';
 
 import './help-dialog.scss';
 
@@ -32,9 +33,7 @@ export class HelpDialog extends React.Component<Props> {
           </p>
         </div>
 
-        <div className={'close button'} onClick={() => onClose()}>
-          Got it
-        </div>
+        <Button onClick={onClose} buttonText={'Got it'} className={'help-dialog-button'} />
       </div>
     );
   }
