@@ -3,6 +3,7 @@ import React from 'react';
 
 import { ViewMode, WordBashState } from './state/WordBashState';
 import { WordBashWeb } from './components/web/WordBashWeb';
+import { WordBashMobile } from './components/mobile/WordBashMobile';
 
 import './app.scss';
 import './components/common/styles/common-styles.scss';
@@ -12,10 +13,16 @@ export class App extends React.PureComponent {
   private readonly wbState = new WordBashState();
 
   public render() {
-    if (this.wbState.viewMode === ViewMode.DESKTOP) {
-      return <WordBashWeb wbState={this.wbState} />;
+    let app: JSX.Element;
+    switch (this.wbState.viewMode) {
+      case ViewMode.DESKTOP:
+        app = <WordBashWeb wbState={this.wbState} />;
+        break;
+      case ViewMode.MOBILE:
+        app = <WordBashMobile wbState={this.wbState} />;
+        break;
     }
 
-    return <div></div>;
+    return <div>{app}</div>;
   }
 }
