@@ -1,6 +1,8 @@
 import { observer } from 'mobx-react';
 import React from 'react';
 
+import { Button } from '../../common/button/Button';
+
 import './navbar.scss';
 
 interface Props {
@@ -17,17 +19,13 @@ export class Navbar extends React.Component<Props> {
     return (
       <div className={'navbar'}>
         <div className={'quit'}>
-          <div className={'button'} onClick={() => onQuit()}>
-            quit
-          </div>
+          <Button onClick={onQuit} buttonText={'quit'} />
         </div>
         <div className={'score-container'}>
           <div className={'score'}>{`Words: ${wordCount}`}</div>
         </div>
         <div className={'help'}>
-          <div className={'button'} onClick={() => onHelp()}>
-            help
-          </div>
+          <Button onClick={onHelp} buttonText={'help'} />
         </div>
       </div>
     );
