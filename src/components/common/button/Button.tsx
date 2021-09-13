@@ -17,9 +17,10 @@ export class Button extends React.PureComponent<ButtonProps> {
     const { onClick, className, exiting, loading, buttonText } = this.props;
 
     const btnText = loading ? 'loading' : buttonText;
+
     const exitingClass = exiting ? 'exiting' : '';
-    const buttonClass = loading ? 'loading' : className;
-    const buttonClasses = ['button', exitingClass, buttonClass];
+    const loadingClass = loading ? 'loading' : '';
+    const buttonClasses = ['button', exitingClass, loadingClass, className];
 
     return (
       <button
