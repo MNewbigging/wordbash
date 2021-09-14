@@ -1,0 +1,59 @@
+@import '../../common/styles/animations.scss';
+@import '../../common/styles/palette.scss';
+
+.navbar {
+  width: 100%;
+  height: 100%;
+
+  animation: slideInDown 0.4s $animInCurve 4s;
+  animation-fill-mode: both;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .score-container {
+    flex: 1 1 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .score {
+      user-select: none;
+      width: fit-content;
+      height: fit-content;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      color: $borderColour;
+    }
+  }
+
+  .quit {
+    flex: 0 0 80px;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .help {
+    flex: 0 0 80px;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button {
+    height: 50px;
+    width: fit-content;
+    padding: 5px;
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,23 @@
+@import '../../common/styles/animations.scss';
+@import '../../common/styles/palette.scss';
+
+.letter-pool {
+  width: 275px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+
+  .letter-container {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation: slideInDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.01);
+    animation-fill-mode: both;
+  }
+}
