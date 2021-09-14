@@ -14,6 +14,6 @@ export class GameScreenMobile extends React.PureComponent<Props> {
   render() {
     const { gameState, onQuit } = this.props;
 
-    return <div>Game Screen</div>;
+    return <div className={'game-screen-mobile'}>Game Screen</div>;
   }
 }
