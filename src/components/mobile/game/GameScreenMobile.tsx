@@ -11,7 +11,7 @@ interface Props {
 
 @observer
 export class GameScreenMobile extends React.PureComponent<Props> {
-  render() {
+  public render() {
     const { gameState, onQuit } = this.props;
 
     return <div className={'game-screen-mobile'}>Game Screen</div>;
