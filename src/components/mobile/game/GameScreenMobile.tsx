@@ -14,7 +14,7 @@ interface Props {
 
 @observer
 export class GameScreenMobile extends React.PureComponent<Props> {
-  render() {
+  public render() {
     const { gameState, onQuit } = this.props;
 
     return (
