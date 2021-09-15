@@ -11,7 +11,6 @@ import { Navbar } from '../../web/game/Navbar';
 
 import './game-screen-mobile.scss';
 import './navbar-mobile.scss';
-import './letter-pool-mobile.scss';
 
 interface Props {
   gameState: GameState;
@@ -40,6 +39,7 @@ export class GameScreenMobile extends React.PureComponent<Props> {
 
         <div className={'letter-pool-area'}>
           <LetterPool
+            className={'letter-pool-mob'}
             letterPool={gameState.letterPool}
             onSelectLetter={(letter: Letter) => gameState.selectLetter(letter)}
             exitAnim={gameState.gameOver}

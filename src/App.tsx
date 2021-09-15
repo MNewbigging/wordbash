@@ -23,6 +23,6 @@ export class App extends React.PureComponent {
         break;
     }
 
-    return <div>{app}</div>;
+    return app;
   }
 }
