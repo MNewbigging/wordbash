@@ -24,13 +24,9 @@ export class WordBashState {
 
   constructor() {
     window.addEventListener('resize', this.onResize);
-
+    this.onResize();
     this.loadWordData();
   }
-
-  @action public onResize = () => {
-    this.viewMode = window.innerWidth < this.maxMobileWidth ? ViewMode.MOBILE : ViewMode.DESKTOP;
-  };
 
   @action public playGame() {
     if (!this.wordsData) {
@@ -90,4 +86,8 @@ export class WordBashState {
 
     return resp.text();
   }
+
+  @action private readonly onResize = () => {
+    this.viewMode = window.innerWidth < this.maxMobileWidth ? ViewMode.MOBILE : ViewMode.DESKTOP;
+  };
 }

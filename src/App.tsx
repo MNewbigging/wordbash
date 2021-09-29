@@ -12,15 +12,6 @@ import './components/common/styles/common-styles.scss';
 export class App extends React.PureComponent {
   private readonly wbState = new WordBashState();
 
-  componentDidMount() {
-    window.onresize = this.wbState.onResize;
-    this.wbState.onResize();
-  }
-
-  componentWillUnmount() {
-    window.onresize = undefined;
-  }
-
   public render() {
     let app: JSX.Element;
     switch (this.wbState.viewMode) {
