@@ -28,9 +28,9 @@ export class WordBashState {
     this.loadWordData();
   }
 
-  @action checkViewMode(w: number) {
-    this.viewMode = w < 640 ? ViewMode.MOBILE : ViewMode.DESKTOP;
-  }
+  @action public onResize = () => {
+    this.viewMode = window.innerWidth < this.maxMobileWidth ? ViewMode.MOBILE : ViewMode.DESKTOP;
+  };
 
   @action public playGame() {
     if (!this.wordsData) {
@@ -90,8 +90,4 @@ export class WordBashState {
 
     return resp.text();
   }
-
-  @action private readonly onResize = () => {
-    this.viewMode = window.innerWidth < this.maxMobileWidth ? ViewMode.MOBILE : ViewMode.DESKTOP;
-  };
 }

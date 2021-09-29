@@ -13,12 +13,11 @@ export class App extends React.PureComponent {
   private readonly wbState = new WordBashState();
 
   componentDidMount() {
-    window.onresize = this.onResizeWindow;
-    this.onResizeWindow();
+    window.onresize = this.wbState.onResize;
+    this.wbState.onResize();
   }
 
   componentWillUnmount() {
-    window.onpopstate = undefined;
     window.onresize = undefined;
   }
 
@@ -35,8 +34,4 @@ export class App extends React.PureComponent {
 
     return app;
   }
-
-  private readonly onResizeWindow = () => {
-    this.wbState.checkViewMode(window.innerWidth);
-  };
 }
