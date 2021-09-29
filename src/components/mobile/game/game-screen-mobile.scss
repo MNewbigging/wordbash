@@ -19,12 +19,13 @@
 
   .letter-pool-area {
     margin-bottom: 10px;
+    width: 90%;
 
     display: flex;
     flex-direction: column-reverse;
 
     .letter-pool-mob {
-      width: 275px;
+      width: 100%;
       .letter-container {
         width: 40px;
         height: 40px;
