@@ -28,6 +28,10 @@ export class WordBashState {
     this.loadWordData();
   }
 
+  @action checkViewMode(w: number) {
+    this.viewMode = w < 640 ? ViewMode.MOBILE : ViewMode.DESKTOP;
+  }
+
   @action public playGame() {
     if (!this.wordsData) {
       return;

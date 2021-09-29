@@ -12,6 +12,16 @@ import './components/common/styles/common-styles.scss';
 export class App extends React.PureComponent {
   private readonly wbState = new WordBashState();
 
+  componentDidMount() {
+    window.onresize = this.onResizeWindow;
+    this.onResizeWindow();
+  }
+
+  componentWillUnmount() {
+    window.onpopstate = undefined;
+    window.onresize = undefined;
+  }
+
   public render() {
     let app: JSX.Element;
     switch (this.wbState.viewMode) {
@@ -25,4 +35,8 @@ export class App extends React.PureComponent {
 
     return app;
   }
+
+  private readonly onResizeWindow = () => {
+    this.wbState.checkViewMode(window.innerWidth);
+  };
 }
