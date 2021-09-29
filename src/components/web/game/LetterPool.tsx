@@ -10,12 +10,13 @@ interface Props {
   letterPool: Letter[];
   onSelectLetter: (letter: Letter) => void;
   exitAnim: boolean;
+  className?: string;
 }
 
 @observer
 export class LetterPool extends React.Component<Props> {
   public render() {
-    const { letterPool, onSelectLetter, exitAnim } = this.props;
+    const { letterPool, onSelectLetter, exitAnim, className } = this.props;
 
     const animDelayStep = 0.1;
     const maxAnimDelay = letterPool.length * animDelayStep;
@@ -23,7 +24,7 @@ export class LetterPool extends React.Component<Props> {
     const exitAnimClass = exitAnim ? 'exit' : '';
 
     return (
-      <div className={'letter-pool'}>
+      <div className={'letter-pool ' + className}>
         {letterPool.map((letter, i) => (
           <div
             key={'letter-' + letter.id}

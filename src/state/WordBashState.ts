@@ -24,7 +24,7 @@ export class WordBashState {
 
   constructor() {
     window.addEventListener('resize', this.onResize);
-
+    this.onResize();
     this.loadWordData();
   }
 
